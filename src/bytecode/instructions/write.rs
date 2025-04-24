@@ -1,8 +1,7 @@
-use qudit_core::matrix::{MatMut, MatRef};
-use qudit_core::matrix::{SymSqMatMatMut, SymSqMatMatRef};
-use qudit_core::matrix::{MatVecMut, MatVecRef};
+use qudit_core::matrix::MatMut;
+use qudit_core::matrix::SymSqMatMatMut;
+use qudit_core::matrix::MatVecMut;
 use qudit_core::ComplexScalar;
-use qudit_expr::UnitaryExpression;
 use crate::bytecode::SizedMatrixBuffer;
 use qudit_core::memory::MemoryBuffer;
 use qudit_expr::UtryFunc;
@@ -43,8 +42,8 @@ impl<C: ComplexScalar> WriteStruct<C> {
     ) {
         let gate_params =
             &params[self.idx..self.idx + self.buffer.num_params];
-        let mut matmut = self.buffer.as_matmut::<C>(memory);
-        let mut matgradmut = self.buffer.as_matvecmut::<C>(memory);
+        let matmut = self.buffer.as_matmut::<C>(memory);
+        let matgradmut = self.buffer.as_matvecmut::<C>(memory);
         unsafe {
             let matmutptr = matmut.as_ptr_mut() as *mut C::R;
             let matgradmutptr = matgradmut.as_mut_ptr().as_ptr() as *mut C::R;
@@ -55,8 +54,8 @@ impl<C: ComplexScalar> WriteStruct<C> {
     #[inline(always)]
     pub fn execute_unitary_gradient_and_hessian(
         &self,
-        params: &[C::R],
-        memory: &mut MemoryBuffer<C>,
+        _params: &[C::R],
+        _memory: &mut MemoryBuffer<C>,
     ) {
         todo!()
         // let gate_params =
@@ -76,8 +75,8 @@ impl<C: ComplexScalar> WriteStruct<C> {
     pub fn execute_unitary_into(
         &self,
         params: &[C::R],
-        memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
+        _memory: &mut MemoryBuffer<C>,
+        out: MatMut<C>,
     ) {
         let gate_params =
             &params[self.idx..self.idx + self.buffer.num_params];
@@ -91,9 +90,9 @@ impl<C: ComplexScalar> WriteStruct<C> {
     pub fn execute_unitary_and_gradient_into(
         &self,
         params: &[C::R],
-        memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut matgradmut: MatVecMut<C>,
+        _memory: &mut MemoryBuffer<C>,
+        out: MatMut<C>,
+        matgradmut: MatVecMut<C>,
     ) {
         let gate_params =
             &params[self.idx..self.idx + self.buffer.num_params];
@@ -107,11 +106,11 @@ impl<C: ComplexScalar> WriteStruct<C> {
     #[inline(always)]
     pub fn execute_unitary_gradient_and_hessian_into(
         &self,
-        params: &[C::R],
-        memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut matgradmut: MatVecMut<C>,
-        mut mathessmut: SymSqMatMatMut<C>,
+        _params: &[C::R],
+        _memory: &mut MemoryBuffer<C>,
+        _out: MatMut<C>,
+        _matgradmut: MatVecMut<C>,
+        _mathessmut: SymSqMatMatMut<C>,
     ) {
         todo!()
     }

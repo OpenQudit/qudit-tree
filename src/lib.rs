@@ -12,8 +12,8 @@ pub use qvm::QVM;
 
 #[cfg(test)]
 mod tests {
-    use super::tree::TreeBuilder;
-    use super::bytecode::Bytecode;
+    // use super::tree::TreeBuilder;
+    // use super::bytecode::Bytecode;
 
     #[test]
     fn test_tree() {

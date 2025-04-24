@@ -141,7 +141,7 @@ impl BytecodeGenerator {
                 self.static_tree_cache.insert(tree.clone(), out);
                 out
             },
-            ExpressionTree::Perm(n) => {
+            ExpressionTree::Perm(_n) => {
                 unreachable!();
                 // let child = self.parse(&n.child);
                 // let out = self.get_free_to_clobber(n.get_dimension(), n.get_dimension(), n.get_num_params());
@@ -219,6 +219,7 @@ impl BytecodeGenerator {
 
 pub struct StaticBytecodeOptimizer {
     bytecode: Bytecode,
+    #[allow(dead_code)]
     gate_cache: HashMap<UnitaryExpression, usize>,
     replaced_buffers: HashMap<usize, usize>,
 }

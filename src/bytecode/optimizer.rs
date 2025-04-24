@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use super::{Bytecode, GeneralizedInstruction, MatrixBuffer};
 
@@ -204,6 +204,7 @@ pub fn remove_identity_frpr(code: Bytecode) -> Bytecode {
 pub struct BufferReuser {}
 
 impl BufferReuser {
+    #[allow(dead_code)]
     pub fn new() -> Self {
         Self {}
     }
@@ -297,7 +298,8 @@ impl BufferReuser {
         }
     }
 
-    pub fn reuse_buffers(mut self, code: Bytecode) -> Bytecode {
+    #[allow(dead_code)]
+    pub fn reuse_buffers(self, code: Bytecode) -> Bytecode {
         let mut buffer_lifespans: HashMap<usize, Vec<(usize, usize)>> =
             HashMap::new();
         let mut active_buffers = HashMap::new();

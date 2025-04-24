@@ -1,5 +1,5 @@
-use aligned_vec::{avec, AVec};
-use bytemuck::Zeroable;
+// use aligned_vec::{avec, AVec};
+// use bytemuck::Zeroable;
 use faer::reborrow::ReborrowMut;
 use qudit_expr::DifferentiationLevel;
 use qudit_expr::Module;
@@ -20,6 +20,7 @@ pub struct QVM<C: ComplexScalar> {
     first_run: bool,
     static_instructions: Vec<SpecializedInstruction<C>>,
     dynamic_instructions: Vec<SpecializedInstruction<C>>,
+    #[allow(dead_code)]
     module: Module<C>,
     memory: MemoryBuffer<C>,
     diff_lvl: DifferentiationLevel,

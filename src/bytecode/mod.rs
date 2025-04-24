@@ -15,5 +15,5 @@ pub use generator::BytecodeGenerator;
 pub use generator::StaticBytecodeOptimizer;
 pub use optimizer::remove_identity_frpr;
 // pub use optimizer::BufferOptimizer;
-pub use optimizer::BufferReuser;
+// pub use optimizer::BufferReuser;
 pub use specialized::SpecializedInstruction;

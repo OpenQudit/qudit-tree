@@ -1,4 +1,4 @@
-use std::{collections::HashMap, mem::size_of};
+use std::collections::HashMap;
 
 // use aligned_vec::CACHELINE_ALIGN;
 // use faer_entity::Entity;
@@ -63,7 +63,7 @@ impl Bytecode {
                     / 2;
             }
         }
-        let mut memory_size = offset;
+        let memory_size = offset;
         // println!("Memory size: {}", memory_size);
 
         // TODO: can be done a lot more efficient

@@ -73,7 +73,7 @@ impl<C: ComplexScalar> SpecializedInstruction<C> {
         &self,
         params: &[C::R],
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
+        out: MatMut<C>,
     ) {
         match self {
             SpecializedInstruction::Write(w) => {
@@ -95,8 +95,8 @@ impl<C: ComplexScalar> SpecializedInstruction<C> {
         &self,
         params: &[C::R],
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut grad: MatVecMut<C>,
+        out: MatMut<C>,
+        grad: MatVecMut<C>,
     ) {
         match self {
             SpecializedInstruction::Write(w) => w
@@ -119,9 +119,9 @@ impl<C: ComplexScalar> SpecializedInstruction<C> {
         &self,
         params: &[C::R],
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut grad: MatVecMut<C>,
-        mut hess: SymSqMatMatMut<C>,
+        out: MatMut<C>,
+        grad: MatVecMut<C>,
+        hess: SymSqMatMatMut<C>,
     ) {
         match self {
             SpecializedInstruction::Write(w) => w

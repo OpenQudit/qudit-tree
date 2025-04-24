@@ -26,7 +26,7 @@ impl MatmulStruct {
         &self,
         left: MatRef<C>,
         right: MatRef<C>,
-        mut out: MatMut<C>,
+        out: MatMut<C>,
     ) {
         matmul_unchecked(
             left,
@@ -82,7 +82,7 @@ impl MatmulStruct {
         right_utry: MatRef<C>,
         right_grad: MatVecRef<C>,
         right_hess: SymSqMatMatRef<C>,
-        mut out: SymSqMatMatMut<C>,
+        out: SymSqMatMatMut<C>,
     ) {
         // Upper left block: right_utry * left_hess
         for left_hess_row in 0..left_hess.nmats() {
@@ -202,7 +202,7 @@ impl MatmulStruct {
     pub fn execute_unitary_into<C: ComplexScalar>(
         &self,
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
+        out: MatMut<C>,
     ) {
         let left_matref = self.left.as_matref::<C>(memory);
         let right_matref = self.right.as_matref::<C>(memory);
@@ -213,8 +213,8 @@ impl MatmulStruct {
     pub fn execute_unitary_and_gradient_into<C: ComplexScalar>(
         &self,
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut out_grad: MatVecMut<C>,
+        out: MatMut<C>,
+        out_grad: MatVecMut<C>,
     ) {
         let left_matref = self.left.as_matref::<C>(memory);
         let left_matgradref = self.left.as_matvecref::<C>(memory);
@@ -234,9 +234,9 @@ impl MatmulStruct {
     pub fn execute_unitary_gradient_and_hessian_into<C: ComplexScalar>(
         &self,
         memory: &mut MemoryBuffer<C>,
-        mut out: MatMut<C>,
-        mut out_grad: MatVecMut<C>,
-        mut out_hess: SymSqMatMatMut<C>,
+        out: MatMut<C>,
+        out_grad: MatVecMut<C>,
+        out_hess: SymSqMatMatMut<C>,
     ) {
         let left_matref = self.left.as_matref::<C>(memory);
         let left_matgradref = self.left.as_matvecref::<C>(memory);
